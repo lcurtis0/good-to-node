@@ -6,96 +6,80 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
-        { /* Pass your questions in here */
-            type: 'input',
-            message: 'What would you like your project title to be?',
-            name: 'Title'
-        },
-        {
-            type: 'input',
-            message: 'What is ther purpose of your project?',
-            name: 'purpose'
-        },
-        {
-            type: 'input',
-            message: 'What would you like your description to be?',
-            name: 'description'
-        },
-        {
-            type: 'input',
-            message: 'What is something you learned throughout this process?',
-            name: 'learned'
-        },
-        {
-            type: 'input',
-            message: 'Now that you created this application, how do you hope the users will use it?',
-            name: 'accomplish'
-        },
-        {
-            type: 'input',
-            message: 'Is there anyone you would want to credit?',
-            name: 'credit',
-            default: 'No credit'
-        },
-        {
-            type: 'input',
-            message: 'What is the URL of person, company or org you would like to credit?',
-            name: 'creditURL',
-            default: 'None '
-        },
-        {
-            type: 'list',
-            message: 'Which licence did you choose?',
-            name: 'licence',
-            choice: ['Academic Free License v3.0', 'Apache license 2.0', 'BSD Zero-Clause license', 'Eclipse Public License 1.0', 'ISC', 'MIT', 'The Unlicense'],
-        },
-        {
-            type: 'input',
-            message: 'What is your Github username?',
-            name: 'username'
-        },
-        {
-            type: 'input',
-            message: 'What your deployment link deployment?',
-            name: 'deployment'
-        },
-        {
-            type: 'input',
-            message: 'What is your contact email?',
-            name: 'email'
-        },
-        {
-            type: 'expand',
-            name: 'badge',
-            message: 'what badge would you like to add?',
-            choices: [
-                {
-                    key: '1',
-                    name: 'Data Camp',
-                    value: 'https://img.shields.io/badge/Datacamp-05192D?style=for-the-badge&logo=datacamp&logoColor=65FF8F',
-                },
-                {
-                    key: '2',
-                    name: 'Duolingo',
-                    value: 'https://img.shields.io/badge/Duolingo-58CC02?style=for-the-badge&logo=Duolingo&logoColor=white',
-                },
-                {
-                    key: '3',
-                    name: 'Edx',
-                    value: 'https://img.shields.io/badge/Edx-193A3E?style=for-the-badge&logo=edx&logoColor=white',
-                },
-            ],
-        },
-        {
-            type: 'input',
-            message: 'How can someone contribute?',
-            name: 'contribute'
-        }
+    { /* Pass your questions in here */
+        type: 'input',
+        message: 'What would you like your project title to be?',
+        name: 'Title'
+    },
+    {
+        type: 'input',
+        message: 'What is ther purpose of your project?',
+        name: 'purpose'
+    },
+    {
+        type: 'input',
+        message: 'What would you like your description to be?',
+        name: 'description'
+    },
+    {
+        type: 'input',
+        message: 'What is something you learned throughout this process?',
+        name: 'learned'
+    },
+    {
+        type: 'input',
+        message: 'Now that you created this application, how do you hope the users will use it?',
+        name: 'accomplish'
+    },
+    {
+        type: 'input',
+        message: 'Is there anyone you would want to credit?',
+        name: 'credit'
+    },
+    {
+        type: 'input',
+        message: 'What is the URL of person, company or org you would like to credit?',
+        name: 'creditURL'
+    },
+    {
+        type: 'list',
+        message: 'Which licence did you choose?',
+        name: 'licence',
+        choice: ['Academic Free License v3.0', 'Apache license 2.0', 'BSD Zero-Clause license', 'Eclipse Public License 1.0', 'ISC', 'MIT', 'The Unlicense'],
+    },
+    {
+        type: 'input',
+        message: 'What is your Github username?',
+        name: 'username'
+    },
+    {
+        type: 'input',
+        message: 'What your deployment link deployment?',
+        name: 'deployment'
+    },
+    {
+        type: 'input',
+        message: 'What is your contact email?',
+        name: 'email'
+    },
+
+    {
+        type: "list",
+        name: "license",
+        message: "What kind of license should your project have?",
+        choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
+    },
+
+    {
+        type: 'input',
+        message: 'How can someone contribute?',
+        name: 'contribute'
+    }
 
 
-    ];
+];
 
-   
+
 
 // TODO: Create a function to write README file
 
@@ -103,8 +87,8 @@ const questions = [
 
 function writeToFile(filename, data) {
     fs.writeFile(filename, data)
-    .then(() => console.log("Your file has been created!"))
-    .catch((err) => console.error("There was an error: " + err))
+        .then(() => console.log("Your file has been created!"))
+        .catch((err) => console.error("There was an error: " + err))
 }
 
 
@@ -116,22 +100,22 @@ function init() {
 
     inquirer.prompt(questions)
 
-    .then((answers) => {
-        const markdown = generateMarkdown(answers);
-        // Use user feedback for... whatever!!
-    writeToFile('NEW-README.md', markdown);
+        .then((answers) => {
+            const markdown = generateMarkdown(answers);
+            // Use user feedback for... whatever!!
+            writeToFile('NEW-README.md', markdown);
 
-    })
+        })
 
-    .catch((error) => {
-        if (error.isTtyError) {
-            // Prompt couldn't be rendered in the current environment
-            console.log("error" + error);
-        } else {
-            // Something else went wrong
-            console.log("another type of error: perhaps did not answer questions correctly");
-        }
-    });
+        .catch((error) => {
+            if (error.isTtyError) {
+                // Prompt couldn't be rendered in the current environment
+                console.log("error" + error);
+            } else {
+                // Something else went wrong
+                console.log("Another type of error: perhaps did not answer questions correctly");
+            }
+        });
 
 }
 
