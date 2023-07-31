@@ -1,130 +1,139 @@
 // TODO: Include packages needed for this application
 
-function writeToFile(fileName, data) {
-
-    return `
-    ## Turtle-Necklace (Challenge-2)
-
-# Description
-
-This files are created to complete the Module two challenge-2
-
-I want to have a portfolio so that I'm seen more favorable by employeers.
-
-Potental employeers should be able to see my latest worka nd description about me.
-
-I learned that flex boxes and are not a simple skill to master. it takes carful consideration of flow and boxes but can be solved by web queries.
-
-Table of Contents
-- [Description](#Decription)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Credits](#Credits)
-- [License](#License)
-- [Deployment](#Deployment)
-
-N/A
-
-# Usage
-In this asignment is to create a portfolio site for future employeers and uddated later on. For web users they click on the site link and see the site itself. 
-
-![alttext](./assets/images/Screenshots/Screenshot%20(110).png)
-![alttext](./assets/images/Screenshots/Screenshot%20(111).png)
-![alttext](./assets/images/Screenshots/Screenshot%20(112).png)
-![alttext](./assets/images/Screenshots/Screenshot%20(113).png)
-
-# Credits
-
-Credit to W3schools.com for understanding media Queries. (Tutorial)
-
-URL: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
-
-Credit to coolors for color variety.
-
-URL: https://coolors.co/
-
-
-# License
-
-N/A
-
-# Deployment
-Evaluated environment url: https://lcurtis0.github.io/Turtle-Necklace/
-
-Badges
-N/A
-
-How to Contribute
-N/A
-
-Tests
-N/A
- `
-
-}
-
-const package = require('./package.json');
-const inquirer = require('inquirer');
-//const fs = require(FileSystem);
-
-console.log("Hello and welcome to the README Generator!");
-console.log("Let's get started...");
+const inquirer = require('inquirer'); // inquirer is 
+const fs = require("fs/promises");
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-inquirer
-.prompt([
-   { /* Pass your questions in here */
-    type:'input',
-    message: 'What would you like your project title to be?',
-    name:'README Title'
-    },
-    { 
-    type:'input',
-    message: 'What would you like your project title to be?',
-    name:'README Title'
-    }
-  ])
-  .then((answers) => {
-    // Use user feedback for... whatever!!
-    console.log("Here is what you wrote");
-    console.log(answers);
+const questions = [
+        { /* Pass your questions in here */
+            type: 'input',
+            message: 'What would you like your project title to be?',
+            name: 'Title'
+        },
+        {
+            type: 'input',
+            message: 'What is ther purpose of your project?',
+            name: 'purpose'
+        },
+        {
+            type: 'input',
+            message: 'What would you like your description to be?',
+            name: 'description'
+        },
+        {
+            type: 'input',
+            message: 'What is something you learned throughout this process?',
+            name: 'learned'
+        },
+        {
+            type: 'input',
+            message: 'Now that you created this application, how do you hope the users will use it?',
+            name: 'accomplish'
+        },
+        {
+            type: 'input',
+            message: 'Is there anyone you would want to credit?',
+            name: 'credit',
+            default: 'No credit'
+        },
+        {
+            type: 'input',
+            message: 'What is the URL of person, company or org you would like to credit?',
+            name: 'creditURL',
+            default: 'None '
+        },
+        {
+            type: 'list',
+            message: 'Which licence did you choose?',
+            name: 'licence',
+            choice: ['Academic Free License v3.0', 'Apache license 2.0', 'BSD Zero-Clause license', 'Eclipse Public License 1.0', 'ISC', 'MIT', 'The Unlicense'],
+        },
+        {
+            type: 'input',
+            message: 'What is your Github username?',
+            name: 'username'
+        },
+        {
+            type: 'input',
+            message: 'What your deployment link deployment?',
+            name: 'deployment'
+        },
+        {
+            type: 'input',
+            message: 'What is your contact email?',
+            name: 'email'
+        },
+        {
+            type: 'expand',
+            name: 'badge',
+            message: 'what badge would you like to add?',
+            choices: [
+                {
+                    key: '1',
+                    name: 'Data Camp',
+                    value: 'https://img.shields.io/badge/Datacamp-05192D?style=for-the-badge&logo=datacamp&logoColor=65FF8F',
+                },
+                {
+                    key: '2',
+                    name: 'Duolingo',
+                    value: 'https://img.shields.io/badge/Duolingo-58CC02?style=for-the-badge&logo=Duolingo&logoColor=white',
+                },
+                {
+                    key: '3',
+                    name: 'Edx',
+                    value: 'https://img.shields.io/badge/Edx-193A3E?style=for-the-badge&logo=edx&logoColor=white',
+                },
+            ],
+        },
+        {
+            type: 'input',
+            message: 'How can someone contribute?',
+            name: 'contribute'
+        }
 
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-      console.log("error");
-    } else {
-      // Something else went wrong
-      console.log("another type of error");
-    }
-  });
 
-const questions = [];
+    ];
 
-
+   
 
 // TODO: Create a function to write README file
 
-/*
-const renderQuestion = process.argv[2];
-const answer = process.argv[3];
-
-function writeToFile(fileName, data) {}
-
-function writeToFile('Newile.txt', data) {}
-*/
 
 
-
-//FileSystem.appendfile('NEW-README.md', `${process.argv[2]}`, (err)=> 
-//    err ? console.error(err) : console.log('file created'))
-
-
+function writeToFile(filename, data) {
+    fs.writeFile(filename, data)
+    .then(() => console.log("Your file has been created!"))
+    .catch((err) => console.error("There was an error: " + err))
+}
 
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+
+    console.log("Hello and welcome to the README Generator!");
+    console.log("Let's get started...");
+
+    inquirer.prompt(questions)
+
+    .then((answers) => {
+        const markdown = generateMarkdown(answers);
+        // Use user feedback for... whatever!!
+    writeToFile('NEW-README.md', markdown);
+
+    })
+
+    .catch((error) => {
+        if (error.isTtyError) {
+            // Prompt couldn't be rendered in the current environment
+            console.log("error" + error);
+        } else {
+            // Something else went wrong
+            console.log("another type of error: perhaps did not answer questions correctly");
+        }
+    });
+
+}
 
 // Function call to initialize app
 init();

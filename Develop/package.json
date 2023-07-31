@@ -8,10 +8,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "badge-maker": "^3.3.1",
     "badmath": "^1.0.1",
     "inquirer": "^8.2.4"
   },
-  "devDependencies": {},
   "keywords": [],
   "description": ""
 }
