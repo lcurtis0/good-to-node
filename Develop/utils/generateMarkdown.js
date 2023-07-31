@@ -1,9 +1,16 @@
 
+const makeBadge = require('badge-maker');
+
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if(license === 'Academic Free License v3.0'){
-    answers.badge = al
+  if (license === 'Academic Free License v3.0') {
+    {
+      [!]
+    },
+  } else if (license === 'MIT') {
+
   }
 
 }
@@ -11,8 +18,10 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if(license){
-    
+  if (license === 'MIT') {
+
+  } else if {
+
   }
 
 }
