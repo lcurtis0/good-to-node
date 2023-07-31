@@ -41,12 +41,14 @@ const questions = [
         message: 'What is the URL of person, company or org you would like to credit?',
         name: 'creditURL'
     },
+
     {
-        type: 'list',
-        message: 'Which licence did you choose?',
-        name: 'licence',
-        choice: ['Academic Free License v3.0', 'Apache license 2.0', 'BSD Zero-Clause license', 'Eclipse Public License 1.0', 'ISC', 'MIT', 'The Unlicense'],
+        type: "list",
+        name: "license",
+        message: "What kind of license should your project have?",
+        choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
     },
+
     {
         type: 'input',
         message: 'What is your Github username?',
@@ -61,13 +63,6 @@ const questions = [
         type: 'input',
         message: 'What is your contact email?',
         name: 'email'
-    },
-
-    {
-        type: "list",
-        name: "license",
-        message: "What kind of license should your project have?",
-        choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
     },
 
     {
@@ -86,6 +81,7 @@ const questions = [
 
 
 function writeToFile(filename, data) {
+    console.log(data);
     fs.writeFile(filename, data)
         .then(() => console.log("Your file has been created!"))
         .catch((err) => console.error("There was an error: " + err))
@@ -100,17 +96,18 @@ function init() {
 
     inquirer.prompt(questions)
 
-        .then((answers) => {
-            const markdown = generateMarkdown(answers);
+        .then(async(answers) => {
+            const markdown = await generateMarkdown(answers);
             // Use user feedback for... whatever!!
+            console.log(markdown);
             writeToFile('NEW-README.md', markdown);
 
         })
 
         .catch((error) => {
-            if (error.isTtyError) {
+            if (error) {
                 // Prompt couldn't be rendered in the current environment
-                console.log("error" + error);
+                console.log("Error caught: " + error);
             } else {
                 // Something else went wrong
                 console.log("Another type of error: perhaps did not answer questions correctly");
