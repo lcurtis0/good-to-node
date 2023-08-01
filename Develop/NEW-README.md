@@ -12,9 +12,9 @@
 
 ff
 
-fff
+ff
 
-fff
+ff
 
 ## Usage
 ff
@@ -29,8 +29,8 @@ URL: ff
 
 MIT
 
-undefined 
-            undefined
+https://opensource.org/licenses/MIT 
+            ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Deployment
 
@@ -44,5 +44,5 @@ Contact email: ff
 
 ## How to Contribute
 
-f
+ff
 
