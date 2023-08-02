@@ -26,6 +26,8 @@ Users must fill out a series of questions after entering node script.js
 
 Here is the video
 
+https://drive.google.com/file/d/1kdQKUqT8dBivavoYqhyHFSbFH-pLgYDs/view
+
 # Credits
 
 N/A
