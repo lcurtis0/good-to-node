@@ -1,26 +1,47 @@
-# good-to-node
+# good-to-node (challenge-9)
 
-Notes for assignment:
+# Description
 
-GIVEN a command-line application that accepts user input
+This files are created to complete the Module nine challenge-9
 
-WHEN I am prompted for information about my application repository
-THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions - ✔️
+I want to have a README generator.
 
-WHEN I enter my project title
-THEN this is displayed as the title of the README ✔️
+This is so that users can quickly create a README to save time.
 
-WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests ✔️
+I learned about npms and the amount of shortcuts it can take to make web development easier
 
-WHEN I choose a license for my application from a list of options
-THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under  ✔️
+Table of Contents
+- [Description](#Decription)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Credits](#Credits)
+- [License](#License)
+- [Deployment](#Deployment)
 
-WHEN I enter my GitHub username
-THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile ✔️
+N/A
 
-WHEN I enter my email address
-THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions  ✔️
+# Usage
 
-WHEN I click on the links in the Table of Contents
-THEN I am taken to the corresponding section of the README ✔️
+Users must fill out a series of questions after entering node script.js
+
+Here is the video
+
+# Credits
+
+N/A
+
+# License
+
+'![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)'
+
+# Deployment
+Evaluated environment url: https://lcurtis0.github.io/good-to-node/
+
+Badges
+N/A
+
+How to Contribute
+N/A
+
+Tests
+N/A

@@ -108,7 +108,6 @@ function init() {
         .then(async (answers) => { //cannot start function until all answers are in (async + await)
             const markdown = await generateMarkdown(answers); // answers come back from generateMarkdown
             writeToFile('README.md', markdown); //Finally creates a README with answers inside
-
         })
 
         .catch((error) => {
