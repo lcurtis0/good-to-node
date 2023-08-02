@@ -1,15 +1,15 @@
-// TODO: Include packages needed for this application
 
-const inquirer = require('inquirer'); // inquirer is 
+
+const inquirer = require('inquirer'); // inquirer is give prompts (js files) for the array the user inputs into
 const fs = require("fs/promises");
-const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown'); // generateMarkdown has buttons inorder to create  license badges
 
-// TODO: Create an array of questions for user input
-const questions = [
-    { /* Pass your questions in here */
-        type: 'input',
+
+const questions = [ // questions array
+    {
+        type: 'input', // type shows what of prompted question will be given 
         message: 'What would you like your project title to be?',
-        name: 'Title'
+        name: 'Title' //Assigned name of the question
     },
     {
         type: 'input',
@@ -43,7 +43,7 @@ const questions = [
     },
 
     {
-        type: "list",
+        type: "list", //list gives options to the user
         name: "license",
         message: "What kind of license should your project have?",
         choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
@@ -69,6 +69,16 @@ const questions = [
         type: 'input',
         message: 'How can someone contribute?',
         name: 'contribute'
+    },
+    {
+        type: 'input',
+        message: 'What tests have you done for the project?',
+        name: 'tests'
+    },
+    {
+        type: 'input',
+        message: 'What would you say to a user if they had any questions?',
+        name: 'questions'
     }
 
 
@@ -76,45 +86,39 @@ const questions = [
 
 
 
-// TODO: Create a function to write README file
 
 
 
-function writeToFile(filename, data) {
-    console.log(data);
+
+function writeToFile(filename, data) { //The function will not start until file system writes "filename" and "data"
     fs.writeFile(filename, data)
         .then(() => console.log("Your file has been created!"))
         .catch((err) => console.error("There was an error: " + err))
 }
 
 
-// TODO: Create a function to initialize app
+
 function init() {
 
     console.log("Hello and welcome to the README Generator!");
     console.log("Let's get started...");
 
-    inquirer.prompt(questions)
+    inquirer.prompt(questions)// inquirer.prompt holds question
 
-        .then(async(answers) => {
-            const markdown = await generateMarkdown(answers);
-            // Use user feedback for... whatever!!
-            console.log(markdown);
-            writeToFile('NEW-README.md', markdown);
+        .then(async (answers) => { //cannot start function until all answers are in (async + await)
+            const markdown = await generateMarkdown(answers); // answers come back from generateMarkdown
+            writeToFile('README.md', markdown); //Finally creates a README with answers inside
 
         })
 
         .catch((error) => {
             if (error) {
-                // Prompt couldn't be rendered in the current environment
                 console.log("Error caught: " + error);
             } else {
-                // Something else went wrong
                 console.log("Another type of error: perhaps did not answer questions correctly");
             }
         });
 
 }
 
-// Function call to initialize app
 init();
